@@ -11,8 +11,27 @@ export const update = async (id: number, payload: Partial<UserInput>): Promise<U
     if (!user) {
         throw new Error('not found')
     }
-    const updatedIngredient = await (user as User).update(payload)
-    return updatedIngredient
+    const updatedUser = await (user as User).update(payload)
+    return updatedUser
+}
+
+export const getById = async (id: number): Promise<UserPost> => {
+    const user = await User.findByPk(id, {include: [Post]})
+
+    if (!user) {
+        // @todo throw custom error
+        throw new Error('not found')
+    }
+
+    return user
+}
+
+export const deleteById = async (id: number): Promise<boolean> => {
+    const deletedUserCount = await User.destroy({
+        where: {id}
+    })
+
+    return !!deletedUserCount
 }
 
 export const getAll = async (): Promise<UserPost[]> => {

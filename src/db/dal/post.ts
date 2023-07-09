@@ -17,6 +17,18 @@ export const update = async (id: number, payload: Partial<PostInput>): Promise<P
     return updatedPost
 }
 
+export const getById = async (id: number): Promise<PostOutput> => {
+    const post = await Post.findByPk(id)
+
+    if (!post) {
+        // @todo throw custom error
+        throw new Error('not found')
+    }
+    return post
+}
+
+
+
 export const getAll = async (): Promise<PostOutput[]> => {
     return Post.findAll()
 }

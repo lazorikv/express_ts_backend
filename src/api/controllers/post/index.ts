@@ -12,6 +12,10 @@ export const update = async (id: number, payload: UpdatePostDTO): Promise<Post> 
     return mapper.toPost(await service.update(id, payload))
 }
 
+export const getById = async (id: number): Promise<Post> => {
+    return mapper.toPost(await service.getById(id))
+}
+
 export const getAll = async(): Promise<Post[]> => {
     return (await service.getAll()).map(mapper.toPost)
 }

@@ -2,8 +2,6 @@ import Post from "./models/post";
 import User from "./models/user";
 
 
-
- // Определение связей между моделями User и Post
 User.hasMany(Post, { foreignKey: 'userId' });
 Post.belongsTo(User, { foreignKey: 'userId' });
 

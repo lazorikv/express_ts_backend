@@ -10,6 +10,10 @@ export const update = (id: number, payload: Partial<PostInput>): Promise<PostOut
     return postDal.update(id, payload)
 }
 
+export const getById = (id: number): Promise<PostOutput> => {
+    return postDal.getById(id)
+}
+
 export const getAll = (): Promise<PostOutput[]> => {
     return postDal.getAll()
 }

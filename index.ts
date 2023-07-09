@@ -1,6 +1,4 @@
 import express, { Application, Request, Response } from 'express'
-const bodyParser = require('body-parser');
-import dotenv from 'dotenv';
 import routes from './src/api/routes';
 import dbInit from './src/db/init';
 
@@ -11,7 +9,6 @@ const port = 3000
 export const get = () => {
     const app: Application = express()
 
-    // Body parsing Middleware
     app.use(express.json());
     app.use(express.urlencoded({ extended: true }));
     
